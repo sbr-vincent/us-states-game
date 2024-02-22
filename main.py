@@ -21,10 +21,12 @@ while len(correct_states) < 50:
     answer_state = (screen.textinput(title=f"{len(correct_states)}/50 States Correct",
                                      prompt="What's another state's name?")).title()
     if answer_state == "Exit":
-        missed_states = []
-        for s in state_list:
-            if s not in correct_states:
-                missed_states.append(s)
+        # Added a list comprehension
+        missed_states = [s for s in state_list if s not in correct_states]
+        # missed_states = []
+        # for s in state_list:
+        #     if s not in correct_states:
+        #         missed_states.append(s)
 
         missed_dict = {"State": missed_states}
 
